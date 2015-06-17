@@ -86,3 +86,27 @@
   git commit -m "Primera pregunta"
   git push origin master
   ```
+7. Vistas parciales y marco
+
+  7.1. Instalar e importar el paquete **express-partials**
+
+  Para instalar el paquete **express-partials** hay que ejecutar el comando  
+  ```
+  npm install --save express-partials@0.3.0
+  ```
+
+  nótese el modificador `--save` que modifica el archivo *package.json* para incluir la nueva dependencia.
+
+  Una vez instalada la dependencia de express-partials, se precede a importar el middelware en el archivo app.js.
+
+  7.2. Modificar las vistas
+
+  Se añade el archivo *layout.ejs* en la carpeta *views*.
+  Se modifican los archivos *views/index.ejs*, *views/quizes/answer.ejs* y *views/quizes/question.ejs* para convertirlos en vistas parciales.
+
+  7.3. Guardar una nueva versión de git y subirla al servidor GitHub
+  ```
+  git add --all
+  git commit -m "Vistas parciales y marco"
+  git push origin master
+  ```
