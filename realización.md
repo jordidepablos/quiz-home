@@ -110,3 +110,18 @@
   git commit -m "Vistas parciales y marco"
   git push origin master
   ```
+
+8. CSS adaptable a móviles y PCs
+
+  8.1. Definir los 3 estilos que se van a utilizar
+
+  En la carpeta *public/stylesheets* hay que modificar el archivo  *style.css* para convertirlo en el estilo base de todos los medias y después añadir los archivos *wide.css* y *smartphone.css* que modificarán el estilo base para adaptarlo a su media.
+
+  Una vez echo esto se modifica el archivo *layout.ejs* para añadir las referencias a los nuevos estilos con sus respectivos medias.
+
+  8.2. Guardar una nueva versión de git y subirla al servidor GitHub
+  ```
+  git add --all
+  git commit -m "CSS adaptable a móviles y PCs"
+  git push origin master
+  ```
