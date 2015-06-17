@@ -125,3 +125,15 @@
   git commit -m "CSS adaptable a móviles y PCs"
   git push origin master
   ```
+
+9. Añadir link a la página GitHub del proyecto
+
+  9.1. Añadir los [Octicons](https://octicons.github.com/) para que en el link a GitHub se muestre su icono.
+
+  9.2. Modificar el archivo *layout.ejs* para añadir la referencia a la hoya de estilos de los octicons y el link a la página GitHub del proyecto.
+
+  9.3. Guardar una nueva versión de git
+  ```
+  git add --all
+  git commit -m "Link a GitHub"
+  ```
