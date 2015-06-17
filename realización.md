@@ -59,9 +59,30 @@
 
   5.2. Añadir el favicon.ico
 
-  5.3. guardar una nueva versión de git y subirla al servidor GitHub
+  5.3. Guardar una nueva versión de git y subirla al servidor GitHub
   ```
   git add --all
   git commit -m "Primera página y favicon"
+  git push origin master
+  ```
+
+6. Primera pregunta
+
+  6.1. Añadir un nuevo controlador
+
+  Crear el directorio *controllers* y crear en él un nuevo archivo llamado *quiz_controller.js*.
+
+  Después hay que modificar *routes/index.js* para que importe el nuevo controlador y crear las nuevas rutas `GET /quizes/question` y `GET /quizes/answer`.
+
+  6.2. Añadir nuevas vistas para las preguntas y respuestas
+
+  Crear un nuevo directorio *wiews/quizes* y en él crear los archivos *question.ejs* y *answer.ejs*.
+
+  Modificar la página incial para añadir un link a la pregunta.
+
+  6.3. Guardar una nueva versión de git y subirla al servidor GitHub
+  ```
+  git add --all
+  git commit -m "Primera pregunta"
   git push origin master
   ```
