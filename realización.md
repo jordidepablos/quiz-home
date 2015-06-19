@@ -137,3 +137,38 @@
   git add --all
   git commit -m "Link a GitHub"
   ```
+
+10. Añadir página de créditos
+
+  10.1. Crear la nueva rama en el repositorio git
+  ```
+  git checkout -b creditos
+  ```
+  Con esta instrucción se crea la rama **_creditos_** y al mismo tiempo se canvia de la rama master a la nueva rama.
+
+  10.2. Crear nuevo enlace el la barra de navegación editando el archivo *layout.ejs* para añadir el nuevo link.
+
+  10.3. Modificar el archivo *index.js* para habilitar la atención a las peticiones `GET /author`.
+
+  10.4. Añadir la nueva vista *author.ejs*
+
+  10.5. Añadir la imagen *public/images/IMG_0508.JPG*
+
+  10.6. Editar las hojas de estilos para la correcta visualización
+
+  10.7. Guardar una nueva versión en la rama creditos
+  ```
+  git add --all
+  git commit -m "Añadida la página de créditos"
+  ```
+
+  10.8. Integrar la rama creditos con la rama master
+  ```
+  git checkout master
+  git merge creditos
+  ```
+
+  10.9. Subir los cambios a GitHub
+  ```
+  git push origin master
+  ```
