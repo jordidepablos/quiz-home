@@ -172,3 +172,93 @@
   ```
   git push origin master
   ```
+
+11. Despliegue en [Heroku](https://www.heroku.com)
+
+  11.1. Preparación previa:
+
+  Editar el archivo *package.json* para añadir el repositorio de GitHub
+  ```json
+  "repository": {
+      "type": "git",
+      "url": "git@github.com:jordidepablos/quiz.git"
+  },
+  ```
+  Con esta modificación el comando heroku será capaz de añadir el repositorio remoto *heroku* a la aplicación automáticamente
+
+  Editar el archivo */bin/www* cambiar el contenido
+  ```javascript
+  var server = app.listen(app.get('port'), function() {
+    debug('Express server listening on port ' + server.address().port);
+  });
+  ```
+  por este:
+  ```javascript
+  app.listen(app.get('port'), function() {
+    console.log("Node app is running on port:" + app.get('port'))
+  })
+  ```
+
+  Este cambio permite mostrar el puerto en el que escucha la aplicación node en la consola cuando se ejecuta con `foreman` simulando la ejecución en heroku.
+
+  11.2. Instalación de [Heroku Toolbelt](https://toolbelt.heroku.com/)
+
+  Como estoy utilizando una máquina linux con un distribución basada en Debian, la instalación de [Heroku Toolbelt](https://toolbelt.heroku.com/) se realiza mediante el siguiente comando:
+  ```
+  wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+  ```
+
+  11.3. Login remoto en [Heroku](https://www.heroku.com)
+
+  Ejecutar
+  ```
+  heroku login
+  ```
+  e introducir el email y el password
+
+  > ```
+    Enter your Heroku credentials.
+    Email: jordi.depablos@gmail.com
+    Password (typing will be hidden):
+    Authentication successful.
+    ```
+
+  11.4. Creación de la aplicación en [Heroku](https://www.heroku.com)
+
+  Ejecutar
+  ```
+  heroku apps:create quiz-jordi-depablos
+  ```
+
+  > ```
+  Creating quiz-jordi-depablos... done, stack is cedar-14
+  https://quiz-jordi-depablos.herokuapp.com/ | https://git.heroku.com/quiz-jordi-depablos.git
+  Git remote heroku added
+  ```
+
+  11.5. Adaptar quiz a [Heroku](https://www.heroku.com)
+
+  Se tiene que crear el archivo *Procfile* cuyo contenido es:
+  ```
+  web: node ./bin/www
+  ```
+
+  Hecho esto también hay que modificar *package.json* para añadir los "engines" y sus versiones que utiliza la aplicación:
+  ```json
+  "engines": {
+      "node": "0.10.25",
+      "npm": "1.3.10"
+  },
+  ```
+
+  11.6. Crear una nueva versión en el repositorio local
+  ```
+  git add --all
+  git commit -m "Despliegue en heroku"
+  ```
+
+  11.7. Publicar en GitHub y en Heroku
+  ```
+  git push orgin master
+  git push heroku master
+  ```
