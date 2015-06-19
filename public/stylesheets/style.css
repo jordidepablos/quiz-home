@@ -32,3 +32,26 @@ footer {
 nav span {
     margin: 0 10px 0 0;
 }
+
+.author-content {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.authors-list {
+    list-style: none;
+}
+
+.name {
+    background-repeat: no-repeat;
+    padding: 20px 0 20px 60px;
+    background-size: 50px;
+    margin: 0 auto;
+    width: 50%;
+    min-width: 100px;
+    max-width: 150px;
+}
+
+.jordi {
+    background-image: url(/images/IMG_0508.JPG);
+}
