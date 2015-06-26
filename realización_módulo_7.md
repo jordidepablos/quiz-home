@@ -47,3 +47,28 @@
     order: [["pregunta", "ASC"]]
   }
   ```
+
+5. Merge con la rama master
+
+  1. Moverse a la rama master
+  ```
+  git checkout master
+  ```
+
+  2. Hacer el merge
+  ```
+  git merge busqueda
+  ```
+
+6. Despliegue en Heroku
+
+  Ejecutando el comando:
+  ```
+  git push heroku master
+  ```
+
+7. Publicación en GitHub de ambas ramas
+  ```
+  git push origin master
+  git push origin busqueda
+  ```
