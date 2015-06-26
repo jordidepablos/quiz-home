@@ -31,3 +31,19 @@
 3. Añadir formulario de búsqueda en la página que muestra la lista de preguntas
 
   Se Modifica la template *views/quizes/index.ejs* para añadir un nuevo formulario que contiene el campo de texto para introducir la búsqueda y el botón para enviar el formulario.
+
+4. Respuesta a la petición de búsqueda
+
+  Se modifica el método *index* del archivo *quiz_controller.js* para añadir la lógica de búsqueda.
+
+  A diferencia de lo recomendado en el texto del ejercicio y basándome en la documentación del método [findAll](http://docs.sequelizejs.com/en/latest/api/model/#findalloptions-promisearrayinstance) de sequelize, he optado por utilizar una construcción de las opciones de la consulta como la siguiente:
+  ```javascript
+  {
+    where: {
+      pregunta: {
+        like: search
+      }
+    },
+    order: [["pregunta", "ASC"]]
+  }
+  ```
