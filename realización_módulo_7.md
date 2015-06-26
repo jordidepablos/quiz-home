@@ -27,3 +27,7 @@
   git checkout -b busquedas
   ```
   Este comando crea la rama **busquedas** y además cambia a ella.
+
+3. Añadir formulario de búsqueda en la página que muestra la lista de preguntas
+
+  Se Modifica la template *views/quizes/index.ejs* para añadir un nuevo formulario que contiene el campo de texto para introducir la búsqueda y el botón para enviar el formulario.
