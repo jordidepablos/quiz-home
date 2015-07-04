@@ -6,7 +6,7 @@ var quizController = require('../controllers/quiz_controller');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Quiz' });
+  res.render('index', { title: 'Quiz', errors: [] });
 });
 
 // Autoload de comandos con :quizId
@@ -21,11 +21,18 @@ router.get('/quizes/:quizId(\\d+)', quizController.show);
 // GET /quizes/:id/answer
 router.get('/quizes/:quizId(\\d+)/answer', quizController.answer);
 
+// GET /quizes/:id/edit
+router.get('/quizes/:quizId(\\d+)/edit', quizController.edit);
+
+// PUT /quizes/:id
+router.put('/quizes/:quizId(\\d+)', quizController.update);
+
 // GET /quizes/new
 router.get('/quizes/new', quizController.new);
 
 // POST /quizes/create
 router.post('/quizes/create', quizController.create);
+
 
 
 /*
