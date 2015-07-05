@@ -28,23 +28,59 @@ var sequelize = new Sequelize(DB_name, user, pwd, {
 // Importar la definición de la tabla Quiz en quiz.js
 var Quiz = sequelize.import(path.join(__dirname, 'quiz'));
 
+// Importar la definición de la tabla Tema en tema.js
+var Tema = sequelize.import(path.join(__dirname, 'tema'));
+
+Quiz.belongsTo(Tema);
+Tema.hasMany(Quiz);
+
 exports.Quiz = Quiz;
+exports.Tema = Tema;
 
 // sequelize.sync() crea e inicializa tabla de preguntas en DB
 sequelize.sync().then(function() {
-    // then(..) ejecuta el manejador una vez creada la tabla
-    Quiz.count().then(function(count) {
-        if (count === 0) {      // la tabla se inicializa solo si está vacía
-            Quiz.create({
-                pregunta: 'Capital de Italia',
-                respuesta: 'Roma'
+    Tema.count().then(function(count) {
+        if (count === 0) {
+            Tema.create({
+                nombre: 'otro',
             });
-            Quiz.create({
-                pregunta: 'Capital de Portugal',
-                respuesta: 'Lisboa'
+            Tema.create({
+                nombre: 'humanidades',
+            });
+            Tema.create({
+                nombre: 'ocio',
+            });
+            Tema.create({
+                nombre: 'ciencia',
+            });
+            Tema.create({
+                nombre: 'tecnologia',
             }).then(function() {
-                console.log('Base de datos inicializada');
+                Tema.findOne({
+                    where: { 
+                        nombre: 'humanidades'
+                    }
+                }).then(function (humanidades) {
+                    console.log(humanidades.id);
+                    Quiz.count().then(function(count) {
+                        if (count === 0) {      // la tabla se inicializa solo si está vacía
+                            Quiz.create({
+                                pregunta: 'Capital de Italia',
+                                respuesta: 'Roma',
+                                TemaId: humanidades.id
+                            });
+                            Quiz.create({
+                                pregunta: 'Capital de Portugal',
+                                respuesta: 'Lisboa',
+                                TemaId: humanidades.id
+                            }).then(function() {
+                                console.log('Base de datos inicializada');
+                            });
+                        }
+                    });
+                });
             });
         }
     });
+    // then(..) ejecuta el manejador una vez creada la tabla
 });
